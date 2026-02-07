@@ -1,0 +1,40 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}",
+                "${workspaceFolder}/source",
+                "C:/Users/rober/Downloads/eu/plugin-sdk/Plugin_SA",
+                "C:/Users/rober/Downloads/eu/plugin-sdk/Plugin_SA/game_sa",
+                "C:/Users/rober/Downloads/eu/plugin-sdk/Plugin_SA/game_sa/rw",
+                "C:/Users/rober/Downloads/eu/plugin-sdk/shared",
+                "C:/Users/rober/Downloads/eu/plugin-sdk/shared/game"
+            ],
+            "defines": [
+                "WIN32",
+                "GTASA",
+                "GTAGAME_NAME=\"San Andreas\"",
+                "GTAGAME_ABBR=\"SA\"",
+                "GTAGAME_ABBRLOW=\"sa\"",
+                "GTAGAME_PROTAGONISTNAME=\"CJ\"",
+                "GTAGAME_CITYNAME=\"San Andreas\"",
+                "PLUGIN_SGV_10US",
+                "RW",
+                "_CRT_NON_CONFORMING_SWPRINTFS"
+            ],
+            "compilerPath": "C:/Program Files (x86)/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.40.33807/bin/Hostx86/x86/cl.exe",
+            "cStandard": "c17",
+            "cppStandard": "c++latest",
+            "intelliSenseMode": "msvc-x86",
+            "browse": {
+                "path": [
+                    "${workspaceFolder}"
+                ],
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": "${workspaceFolder}/.vscode/browse.vc.db"
+            }
+        }
+    ],
+    "version": 4
+}
