@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="utils\log.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="connection">
+      <UniqueIdentifier>{f8298bc9-982e-434c-9732-2cafc4d52136}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="utils">
+      <UniqueIdentifier>{eef1895a-cb6a-407c-84e8-876feffcd12a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="connectServer.hpp">
+      <Filter>connection</Filter>
+    </ClInclude>
+    <ClInclude Include="connection.hpp">
+      <Filter>connection</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\log.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
