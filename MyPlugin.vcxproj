@@ -136,6 +136,8 @@ xcopy /Y "$(TargetPath)" "$(GTA_SA_DIR)\"
     <ClCompile Include="src\events\onPlayerDead\onPlayerDead.cpp" />
     <ClCompile Include="src\events\onPlayerDamage\onPlayerDamage.cpp" />
     <ClCompile Include="src\events\ProcessEvent.cpp" />
+    <ClCompile Include="src\network\server\onPlayerDamage\onPlayerDamegeServer.cpp" />
+    <ClCompile Include="src\network\client\set_healh\set_health.cpp" />
   </ItemGroup>
   <ItemGroup>
 

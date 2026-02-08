@@ -4,7 +4,7 @@
 #include <game_sa/CTimer.h>
 #include "../utils/log.h"
 #include "events/ProcessEvent.hpp"
-
+#include "./network/connection.hpp"
 
 using namespace plugin;
 
@@ -14,6 +14,8 @@ private:
     CPed *playerPed;
     ProcessEvent *m_pProcessEvent;
     bool wasAlive;
+    ServerSocket* server;
+
     
 
 public:
@@ -30,16 +32,18 @@ public:
             this->Initialize();
         };
         wasAlive = true;
+        server = nullptr;
     }
 
     void Initialize()
     {
         playerPed = FindPlayerPed();
+        server = new ServerSocket(PORT, SERVER_IP, "roberdoo");
 
-        if (playerPed)
+        if (playerPed && server)
         {
 
-            m_pProcessEvent = new ProcessEvent(playerPed);
+            m_pProcessEvent = new ProcessEvent(playerPed, server);
             if (m_pProcessEvent)
             {
                 m_pProcessEvent->create();
