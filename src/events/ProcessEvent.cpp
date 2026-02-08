@@ -10,7 +10,7 @@ void ProcessEvent::create()
     {
         m_jumpEvent = new CEventOnPlayerJump(m_cj);
         m_deadEvent = new onPlayerDead(m_cj);
-        m_damageEvent = new onPlayerDamage(m_cj);
+        m_damageEvent = new onPlayerDamage(m_cj, server);
     }
     cjA = nullptr;
 }
