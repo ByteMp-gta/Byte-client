@@ -5,6 +5,7 @@
 #include "../utils/log.h"
 #include "events/ProcessEvent.hpp"
 
+
 using namespace plugin;
 
 class JumpDetectorPlugin
@@ -13,6 +14,8 @@ private:
     CPed *playerPed;
     ProcessEvent *m_pProcessEvent;
     bool wasAlive;
+    
+
 public:
     JumpDetectorPlugin()
     {
@@ -41,20 +44,21 @@ public:
             {
                 m_pProcessEvent->create();
             }
-           wasAlive = playerPed->IsAlive();
+            wasAlive = playerPed->IsAlive();
+            
         }
     }
 
     void Process()
     {
-        m_pProcessEvent->execute();
-        if (KeyPressed(VK_F5))
-        {
-            playerPed->m_fHealth = 0.0f;
-            playerPed->m_fMaxHealth = 0.0f;
-        }   
         
+
+        if (m_pProcessEvent)
+        {
+            m_pProcessEvent->execute();
+        }
     }
+    
 
     ~JumpDetectorPlugin()
     {

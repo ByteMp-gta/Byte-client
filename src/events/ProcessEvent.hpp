@@ -3,6 +3,7 @@
 #include <plugin.h>
 #include "./onPlayerJump/onPlayerJump.hpp"
 #include "./onPlayerDead/onPlayerDead.hpp"
+#include "./onPlayerDamage/onPlayerDamage.hpp"
 
 #define PROCESSEVENT 1
 
@@ -15,6 +16,7 @@ class ProcessEvent {
         CPed* cjA;
         CEventOnPlayerJump* m_jumpEvent;
         onPlayerDead* m_deadEvent;
+        onPlayerDamage* m_damageEvent;
         unsigned int m_lastStatsTime;
         int m_jumpCount;
         bool m_initialized;
