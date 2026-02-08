@@ -10,6 +10,11 @@ obj/*
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
+*.VC.db
+*.opendb
+*.log
+# Arquivos de cache do VSCode/Visual Studio
+*.VC.db*
 
 # Package Files #
 *.jar
