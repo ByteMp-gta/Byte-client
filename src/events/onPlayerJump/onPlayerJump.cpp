@@ -20,6 +20,8 @@ CEventOnPlayerJump::~CEventOnPlayerJump() {
 
 
 bool CEventOnPlayerJump::execute() {
+    m_cj = FindPlayerPed();
+    
     if (!m_cj) return false;
     
     unsigned int currentTime = CTimer::m_snTimeInMilliseconds;
