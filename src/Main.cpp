@@ -1,10 +1,11 @@
+#include "./network/connection.hpp"
 #include <plugin.h>
 #include <game_sa/CPed.h>
 #include <game_sa/CPlayerPed.h>
 #include <game_sa/CTimer.h>
 #include "../utils/log.h"
 #include "events/ProcessEvent.hpp"
-#include "./network/connection.hpp"
+#include "./network/client/set_healh/set_health.hpp"
 
 using namespace plugin;
 
@@ -39,7 +40,7 @@ public:
     {
         playerPed = FindPlayerPed();
         server = new ServerSocket(PORT, SERVER_IP, "roberdoo");
-
+        server->connectionServer();
         if (playerPed && server)
         {
 
@@ -60,6 +61,9 @@ public:
         if (m_pProcessEvent)
         {
             m_pProcessEvent->execute();
+        }
+        if(KeyPressed(VK_F6)){
+            set_health(50.0f);
         }
     }
     

@@ -1,10 +1,10 @@
 #pragma once
-
+#include "../network/connection.hpp"
 #include <plugin.h>
 #include "./onPlayerJump/onPlayerJump.hpp"
 #include "./onPlayerDead/onPlayerDead.hpp"
 #include "./onPlayerDamage/onPlayerDamage.hpp"
-#include "../network/connection.hpp"
+
 
 #define PROCESSEVENT 1
 

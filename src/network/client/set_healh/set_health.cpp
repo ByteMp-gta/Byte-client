@@ -8,7 +8,7 @@ void set_health(float health)
 
     CPed* playerPed = FindPlayerPed();
    
-    playerPed->m_fHealth = 50.0f;
+    playerPed->m_fHealth = health;
 
     
     *(int *)((DWORD)playerPed + 0x530) = 1;
