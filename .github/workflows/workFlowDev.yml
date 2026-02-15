@@ -13,9 +13,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
     
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
       - name: Run build.bat
         run: build.bat
-        
+        shell: cmd
+
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
