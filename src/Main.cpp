@@ -1,3 +1,4 @@
+#define WIN32_LEAN_AND_MEAN
 #include "./network/connection.hpp"
 #include <plugin.h>
 #include <game_sa/CPed.h>

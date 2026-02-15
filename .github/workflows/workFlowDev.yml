@@ -1,0 +1,35 @@
+name: workflow dev
+
+on: push
+
+jobs:
+
+  workflow-dev:
+
+    runs-on: windows-latest
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+    
+      - name: Run build.bat
+        run: build.bat
+        
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: MyPlugin
+          path: bin\Debug\MyPlugin.asi
+      
+      - name: Verify output file
+        run: | 
+            if exist bin\GTA-SA\Debug\MyPlugin.asi (
+             echo "✅ File created successfully" 
+            ) else (
+                echo "❌ File not found" 
+                exit 1 
+            )
+        shell: cmd
+
+        
