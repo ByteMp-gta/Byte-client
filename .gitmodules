@@ -1,0 +1,4 @@
+
+[submodule "lib/plugin-sdk"]
+	path = lib/plugin-sdk
+	url = https://github.com/DK22Pac/plugin-sdk.git
