@@ -1,39 +1,43 @@
-name: workflow dev
+name: CI/CD Visual Studio
 
 on: push
 
 jobs:
-
-  workflow-dev:
-
+  build:
     runs-on: windows-latest
 
     steps:
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1
 
-      - name: Checkout repository
-        uses: actions/checkout@v4
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+
     
-      - name: Setup MSBuild
-        uses: microsoft/setup-msbuild@v2
+    - name: Premake Visual Studio project (plugin-sdk)
+      shell: cmd
+      run: |
+        set PLUGIN_SDK_DIR=%GITHUB_WORKSPACE%\lib\plugin-sdk
+        cd lib\plugin-sdk
+        call "tools\generate\Visual Studio.bat"
+   
+    - name: Build plugin-sdk
+      shell: cmd
+      run: |
+        cd lib\plugin-sdk
+        msbuild plugin.sln /property:Configuration=Release /property:Platform="Mixed Platforms" /target:plugin_sa /m
+    
+    - name: Build solution
+      run: msbuild MyPlugin.vcxproj /m /p:Configuration=ReleaseGTA-SA /p:Platform=Win32
 
-      - name: Run build.bat
-        run: build.bat
-        shell: cmd
-
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: MyPlugin
-          path: bin\Debug\MyPlugin.asi
-      
-      - name: Verify output file
-        run: | 
-            if exist bin\GTA-SA\Debug\MyPlugin.asi (
-             echo "✅ File created successfully" 
-            ) else (
-                echo "❌ File not found" 
-                exit 1 
-            )
-        shell: cmd
-
-        
+    - name: Package artifacts
+      run: |
+        mkdir artifacts
+        copy bin\GTA-SA\Release\*.asi artifacts\
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: Byte-mp
+        path: artifacts/

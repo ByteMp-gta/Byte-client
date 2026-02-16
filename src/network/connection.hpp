@@ -41,7 +41,7 @@ using socket_t = int;
 #include <cstring>
 #include <ctime>
 
-
+extern ServerSocket* g_Server ;
 class ServerSocket
 {
 private:

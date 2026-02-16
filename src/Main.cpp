@@ -6,6 +6,7 @@
 #include <game_sa/CTimer.h>
 #include "../utils/log.h"
 #include "events/ProcessEvent.hpp"
+#include "./events/onCheatDetected/onCheatDetected.hpp"
 #include "./network/client/set_healh/set_health.hpp"
 
 using namespace plugin;
@@ -17,6 +18,7 @@ private:
     ProcessEvent *m_pProcessEvent;
     bool wasAlive;
     ServerSocket* server;
+    CheatDetector* cheat;
 
     
 
@@ -35,13 +37,16 @@ public:
         };
         wasAlive = true;
         server = nullptr;
+        cheat = nullptr;
     }
 
     void Initialize()
     {
         playerPed = FindPlayerPed();
         server = new ServerSocket(PORT, SERVER_IP, "roberdoo");
+        
         server->connectionServer();
+        g_Server = server;
         if (playerPed && server)
         {
 
@@ -49,6 +54,7 @@ public:
             if (m_pProcessEvent)
             {
                 m_pProcessEvent->create();
+                cheat->update();
             }
             wasAlive = playerPed->IsAlive();
             
