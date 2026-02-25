@@ -4,7 +4,7 @@
 #include "./onPlayerJump/onPlayerJump.hpp"
 #include "./onPlayerDead/onPlayerDead.hpp"
 #include "./onPlayerDamage/onPlayerDamage.hpp"
-
+#include "./onMove/onMove.hpp"
 
 
 #define PROCESSEVENT 1
@@ -20,6 +20,7 @@ class ProcessEvent {
         CEventOnPlayerJump* m_jumpEvent;
         onPlayerDead* m_deadEvent;
         onPlayerDamage* m_damageEvent;
+        onMove* onmove;
         unsigned int m_lastStatsTime;
         int m_jumpCount;
         bool m_initialized;

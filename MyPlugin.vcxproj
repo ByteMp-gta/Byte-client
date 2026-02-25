@@ -22,14 +22,14 @@
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v170</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugGTA-SA|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v170</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -137,9 +137,14 @@ xcopy /Y "$(TargetPath)" "$(GTA_SA_DIR)\"
     <ClCompile Include="src\events\onPlayerJump\onPlayerJump.cpp" />
     <ClCompile Include="src\events\onPlayerDead\onPlayerDead.cpp" />
     <ClCompile Include="src\events\onPlayerDamage\onPlayerDamage.cpp" />
+    <ClCompile Include="src\events\onCheatDetected\onCheatDetected.cpp" />
+    <ClCompile Include="src\events\onMove\onMove.cpp" />
     <ClCompile Include="src\events\ProcessEvent.cpp" />
     <ClCompile Include="src\network\server\onPlayerDamage\onPlayerDamegeServer.cpp" />
     <ClCompile Include="src\network\client\set_healh\set_health.cpp" />
+    <ClCompile Include="src\network\client\set_position\set_position.cpp" />
+    <ClCompile Include="src\network\players\Players.cpp" />
+    <ClCompile Include="src\network\process_request\Process_request.cpp" />
   </ItemGroup>
   <ItemGroup>
 

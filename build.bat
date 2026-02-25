@@ -1,8 +1,8 @@
 @echo off
 
 if defined VSINSTALLDIR (
-    call "%VSINSTALLDIR%\VC\Auxiliary\Build\vcvars64.bat"
-) else (
+    call "%VSINSTALLDIR%\VC\Auxiliary\Build\
+) else (vcvars64.bat"
     call "C:\Program Files\Microsoft Visual Studio\18\Community\VC\Auxiliary\Build\vcvars64.bat"
     echo VSINSTALLDIR not defined, assuming msbuild is in PATH...
 )

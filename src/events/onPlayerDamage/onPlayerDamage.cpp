@@ -4,7 +4,8 @@
 #include <plugin.h>
 #include "../../../utils/log.h"
 #include "../../network/server/onPlayerDamage/onPlayerDamegeServer.hpp"
-
+#include <iostream>
+#include <fstream>
 #include <string>
 
 
@@ -22,7 +23,11 @@ onPlayerDamage::~onPlayerDamage()
 void onPlayerDamage::execute()
 {
     cj = FindPlayerPed();
-    std::string name = "roberdoo";
+     std::ifstream arquivo("name.txt");
+
+    std::string name;
+    std::getline(arquivo, name);
+    arquivo.close();
     if (cj->IsAlive())
     {
         float dano = wasVida - cj->m_fHealth;

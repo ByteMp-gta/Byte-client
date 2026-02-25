@@ -1,6 +1,7 @@
 #include "./ProcessEvent.hpp"
 #include "./onPlayerJump/onPlayerJump.hpp"
 #include "../../utils/log.h"
+#include "./onMove/onMove.hpp"
 
 #if PROCESSEVENT
 
@@ -11,15 +12,18 @@ void ProcessEvent::create()
         m_jumpEvent = new CEventOnPlayerJump(m_cj);
         m_deadEvent = new onPlayerDead(m_cj);
         m_damageEvent = new onPlayerDamage(m_cj, server);
+        onmove = new onMove(m_cj);
     }
     cjA = nullptr;
 }
 
 void ProcessEvent::execute()
 {
+    m_cj = FindPlayerPed();
     m_deadEvent->execute();
     m_damageEvent->execute();
-    m_cj = FindPlayerPed();
+    onmove->run(m_cj);
+    
     static unsigned int frameCounter = 0;
         frameCounter++;
 

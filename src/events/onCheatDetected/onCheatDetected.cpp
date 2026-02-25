@@ -1,7 +1,9 @@
+
 #include "onCheatDetected.hpp"
-#include <windows.h>
 #include "../../network/connection.hpp"
 #include <game_sa/CTimer.h>
+#include <windows.h>
+
 
 
 bool IsModuleLoaded(const char* name)
@@ -29,9 +31,9 @@ void CheatDetector::update()
         IsModuleLoaded("SAMPFUNCS.asi") ||
         IsModuleLoaded("d3d9.dll"))
     {
-        if (!detected && g_Server)
+        if (!detected )
         {
-            g_Server->sendEventServer("CHEAT_DETECTED");
+           
             detected = true;
         }
     }
