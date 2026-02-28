@@ -32,3 +32,5 @@ replay_pid*
 
 .vs/
 *.ipch
+*.VC.db
+*.VC.db*
