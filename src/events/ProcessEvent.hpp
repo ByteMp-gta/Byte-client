@@ -5,7 +5,7 @@
 #include "./onPlayerDead/onPlayerDead.hpp"
 #include "./onPlayerDamage/onPlayerDamage.hpp"
 #include "./onMove/onMove.hpp"
-
+#include <memory>
 
 #define PROCESSEVENT 1
 
@@ -15,12 +15,15 @@ class ProcessEvent {
 
     private:
         CPed* m_cj;
-        ServerSocket* server;
         CPed* cjA;
-        CEventOnPlayerJump* m_jumpEvent;
-        onPlayerDead* m_deadEvent;
-        onPlayerDamage* m_damageEvent;
-        onMove* onmove;
+
+        std::unique_ptr<ServerSocket> server;
+
+        std::shared_ptr<CEventOnPlayerJump> m_jumpEvent;
+        std::unique_ptr<onPlayerDead> m_deadEvent;
+        std::unique_ptr<onPlayerDamage> m_damageEvent;
+        std::unique_ptr<onMove> onmove;
+
         unsigned int m_lastStatsTime;
         int m_jumpCount;
         bool m_initialized;

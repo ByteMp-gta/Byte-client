@@ -2,14 +2,13 @@
 #include <CVector.h>
 #include <plugin.h>
 #include <game_sa/CPed.h>
-#define onMoveDefine 1
 
-#if onMoveDefine
+
 
 class onMove{
     
 private:
-    CPed *cj;
+    CPed* cj;
     CVector vector;
     CVector lastPosition;
     float lastX, lastY, lastZ;
@@ -20,8 +19,7 @@ public:
 
     ~onMove();
 
-    void run(CPed *cja);
+    void run(CPed *cja) ;
 
 };
 
-#endif

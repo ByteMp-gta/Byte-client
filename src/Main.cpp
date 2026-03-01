@@ -8,17 +8,16 @@
 #include <game_sa/CPlayerPed.h>
 #include <game_sa/CTimer.h>
 #include "../utils/log.h"
-#include "events/ProcessEvent.hpp"
+#include "./events/ProcessEvent.hpp"
 #include <iostream>
 #include <string>
 #include <fstream>
-#include <sstream> // Para stringstream
-
-// Função auxiliar para converter qualquer tipo para string
+#include <sstream> 
+#include "./global/Name.hpp"
 
 
 ServerSocket* g_Server = nullptr;
-
+std::string nome = "";
 using namespace plugin;
 
 class JumpDetectorPlugin
@@ -69,7 +68,7 @@ public:
            writeLog("ERRO: playerPed é NULL!");
        }
 
-       // Ler nome
+       
        writeLog("Tentando ler name.txt...");
        std::ifstream arquivo("name.txt");
        std::string name;
@@ -84,6 +83,7 @@ public:
            arquivo.close();
            return;
        }
+       nome = name;
        arquivo.close();
        writeLog("name.txt lido com sucesso: '" + name + "'");
 

@@ -2,6 +2,7 @@
 #include "./onPlayerJump/onPlayerJump.hpp"
 #include "../../utils/log.h"
 #include "./onMove/onMove.hpp"
+#include <memory>
 
 #if PROCESSEVENT
 
@@ -9,10 +10,10 @@ void ProcessEvent::create()
 {
     if (m_cj)
     {
-        m_jumpEvent = new CEventOnPlayerJump(m_cj);
-        m_deadEvent = new onPlayerDead(m_cj);
-        m_damageEvent = new onPlayerDamage(m_cj, server);
-        onmove = new onMove(m_cj);
+        m_jumpEvent = std::make_shared<CEventOnPlayerJump>(m_cj);
+        m_deadEvent = std::make_unique<onPlayerDead>(m_cj);
+        m_damageEvent = std::make_unique<onPlayerDamage>(m_cj);
+        onmove = std::make_unique<onMove>(m_cj);
     }
     cjA = nullptr;
 }
@@ -32,7 +33,7 @@ void ProcessEvent::execute()
             CPed *playerPed = FindPlayerPed();
             if (playerPed && !m_jumpEvent)
             {
-                m_jumpEvent = new CEventOnPlayerJump(playerPed);
+                m_jumpEvent = std::make_shared<CEventOnPlayerJump>(playerPed);
                 if (m_jumpEvent)
                 {
 
@@ -57,9 +58,6 @@ void ProcessEvent::execute()
 
 ProcessEvent::~ProcessEvent()
 {
-    if (m_jumpEvent) 
-    {
-        delete m_jumpEvent;
-    }
+    
 }
 #endif
