@@ -10,7 +10,7 @@
 
 
 #if ONPLAYERDAMAGE
-onPlayerDamage::onPlayerDamage(CPed *cj, ServerSocket* server) : cj(cj), wasVida(cj->m_fHealth),
+onPlayerDamage::onPlayerDamage(CPed *cj) : cj(cj), wasVida(cj->m_fHealth),
 server(server)
 {
 }
@@ -33,7 +33,7 @@ void onPlayerDamage::execute()
         float dano = wasVida - cj->m_fHealth;
         if (dano > 0.1f )
         {
-            onPlayerDamageServer(dano, server, name);
+            onPlayerDamageServer(dano, g_Server, name);
         }
         wasVida = cj->m_fHealth;
     }

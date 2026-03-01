@@ -7,13 +7,15 @@
 
 #if ONPLAYERDAMAGE
 
+
+
 class onPlayerDamage {
 private:
     CPed* cj;
     ServerSocket* server;
     float wasVida;
 public:
-    explicit onPlayerDamage(CPed* cj, ServerSocket* server);
+    explicit onPlayerDamage(CPed* cj);
     ~onPlayerDamage();
     void execute();
 };

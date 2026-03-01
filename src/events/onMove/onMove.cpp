@@ -7,7 +7,8 @@
 #include "../../../utils/log.h"
 #include <iostream>
 #include <string>
-#if onMoveDefine
+#include "../../global/Name.hpp"
+
 
 onMove::~onMove() {}
 
@@ -17,11 +18,7 @@ void onMove::run(CPed *cja)
     if (!cja)
         return;
 
-    std::ifstream arquivo("name.txt");
-
-    std::string name;
-    std::getline(arquivo, name);
-    arquivo.close();
+    
     CVector currentPos = cja->GetPosition();
 
     float currentX, currentY, currentZ;
@@ -52,7 +49,7 @@ void onMove::run(CPed *cja)
 
         if (g_Server)
         {
-            std::string msg = "onMovimentPlayer::"+ name + "::" + std::to_string(currentPos.x) + "::" + std::to_string(currentPos.y) + "::" + std::to_string(currentPos.z) + "::" + std::to_string(lastX) + "::" + std::to_string(lastY) + "::" + std::to_string(lastZ);
+            std::string msg = "onMovimentPlayer::"+ nome + "::" + std::to_string(currentPos.x) + "::" + std::to_string(currentPos.y) + "::" + std::to_string(currentPos.z) + "::" + std::to_string(lastX) + "::" + std::to_string(lastY) + "::" + std::to_string(lastZ);
             g_Server->sendEventServer(msg.c_str());
         }
     }
@@ -63,4 +60,3 @@ void onMove::run(CPed *cja)
     lastY = currentY;
     lastZ = currentZ;
 }
-#endif
